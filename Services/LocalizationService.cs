@@ -52,9 +52,24 @@ public sealed class LocalizationService
         progressCallback?.Invoke("Stahuji češtinu z GitHubu...");
         var contentBytes = await _httpClient.GetByteArrayAsync(Constants.GitHubLocalizationUrl);
 
-        // 🔹 uložení
-        progressCallback?.Invoke("Instaluji novou verzi...");
-        await File.WriteAllBytesAsync(globalIniPath, contentBytes);
+        var temporaryPath = Path.Combine(englishPath, $"global.ini.{Guid.NewGuid():N}.tmp");
+
+        try
+        {
+            // 🔹 bezpečné uložení a nahrazení
+            progressCallback?.Invoke("Instaluji novou verzi...");
+            await File.WriteAllBytesAsync(temporaryPath, contentBytes);
+
+            if (new FileInfo(temporaryPath).Length == 0)
+                throw new InvalidDataException("Stažený soubor lokalizace je prázdný.");
+
+            File.Move(temporaryPath, globalIniPath, overwrite: true);
+        }
+        finally
+        {
+            if (File.Exists(temporaryPath))
+                File.Delete(temporaryPath);
+        }
     }
 
     public async Task UninstallAsync(string livePath, Action<string>? progressCallback = null)
