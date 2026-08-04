@@ -13,5 +13,5 @@ public static class Constants
         "https://raw.githubusercontent.com/JarredSC/Star-Citizen-CZ-lokalizace/main/Localization/english/global.ini";
 
     public const string GitHubLatestReleaseApi =
-        "https://api.github.com/repos/1walkerit/sc-cestinator-avalonia/releases/latest";
+        "https://api.github.com/repos/1walkerit/sc-cz-toolkit/releases/latest";
 }
