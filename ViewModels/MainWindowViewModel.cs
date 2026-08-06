@@ -750,6 +750,11 @@ public class MainWindowViewModel : INotifyPropertyChanged
                 Status = "Čeština zatím není nainstalovaná.";
                 IsUpdateAvailable = true;
             }
+            else if (LocalVersion == "neznámá" || OnlineVersion == "neznámá")
+            {
+                Status = "Verzi češtiny se nepodařilo ověřit.";
+                IsUpdateAvailable = false;
+            }
             else if (LocalVersion != OnlineVersion)
             {
                 Status = $"Je dostupná nová verze češtiny ({LocalVersion} → {OnlineVersion}).";

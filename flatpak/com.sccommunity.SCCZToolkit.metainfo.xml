@@ -11,7 +11,7 @@
     <name>SC CZ Community</name>
   </developer>
   <url type="homepage">
-    https://github.com/1walkerit/sc-cestinator-avalonia
+    https://github.com/1walkerit/sc-cz-toolkit
   </url>
   <description>
     <p>
@@ -29,12 +29,12 @@
   <screenshots>
     <screenshot type="default">
       <image>
-        https://raw.githubusercontent.com/1walkerit/sc-cestinator-avalonia/main/docs/screenshot-main.png
+        https://github.com/user-attachments/assets/91bbf008-83d4-4519-93f3-726edf77fb31
       </image>
     </screenshot>
   </screenshots>
   <releases>
-    <release version="0.5.6" date="2026-05-07"/>
+    <release version="0.5.7" date="2026-08-04"/>
     <release version="0.5.1" date="2026-05-06"/>
   </releases>
 </component>

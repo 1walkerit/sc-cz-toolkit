@@ -22,7 +22,9 @@ public class AppUpdateService
         {
             var latestAppVersion = await _gitHubService.GetLatestAppVersionAsync();
 
-            if (!string.IsNullOrWhiteSpace(latestAppVersion) && latestAppVersion != currentVersion)
+            if (Version.TryParse(latestAppVersion, out var latestVersion) &&
+                Version.TryParse(currentVersion, out var installedVersion) &&
+                latestVersion > installedVersion)
             {
                 return new AppUpdateResult(
                     IsUpdateAvailable: true,
